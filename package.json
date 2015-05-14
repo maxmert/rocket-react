@@ -1,0 +1,42 @@
+{
+  "name": "rocket-react",
+  "version": "0.0.1",
+  "description": "Boilerplate ES6 isomorphic React application based on reactive Flux pattern (use RxJS). Uses Babel, React-router, RxJS, Express.",
+  "main": "server.js",
+  "scripts": {
+    "babel-node": "babel-node --stage 0"
+  },
+  "author": "maxmert",
+  "license": "Apache 2.0",
+  "transform": [
+    [
+      "babelify",
+      {
+        "blacklist": [
+          "regenerator"
+        ]
+      }
+    ]
+  ],
+  "devDependencies": {
+    "babelify": "^6.1.0",
+    "browserify": "^10.1.3",
+    "gulp": "^3.8.11",
+    "gulp-if": "^1.2.5",
+    "gulp-livereload": "^3.8.0",
+    "gulp-nodemon": "^2.0.3",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.2.1",
+    "yargs": "^3.9.0"
+  },
+  "dependencies": {
+    "compression": "^1.4.4",
+    "express": "^4.12.3",
+    "lodash": "^3.8.0",
+    "logdown": "^1.1.2",
+    "react": "^0.13.3",
+    "react-router": "^0.13.3"
+  }
+}

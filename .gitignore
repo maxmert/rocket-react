@@ -1,0 +1,28 @@
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store?
+.DS_Store
+Icon?
+
+
+# NPM Installed stuff #
+#######################
+
+**/node_modules/
+
+/.idea/
+.sass-cache
+/dump.rdb
+
+# Static builded stuff #
+########################
+/static/production
+/static/development/styles/main.css
+/static/development/styles/main.css.map
+/static/development/scripts/app.js
