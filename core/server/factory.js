@@ -31,7 +31,7 @@ export default function factory(config) {
         catch (error) {
             logger.error(`can't start service <${service}>. Probably it doesn't exist.`);
         }
-    }
+    };
 
     return app;
 }

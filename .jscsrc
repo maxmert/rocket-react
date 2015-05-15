@@ -1,4 +1,7 @@
 {
+    "esnext": true,
+    "fileExtensions": [".js", ".jsx"],
+    "esprima": "esprima-fb",
     "disallowSpacesInNamedFunctionExpression": {
         "beforeOpeningRoundBrace": true
     },

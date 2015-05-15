@@ -4,7 +4,7 @@ import * as error from '../../errors';
 export default class Service {
     constructor(service) {
         if (!service) {
-            throw new error.required('service', 'service constructor.')
+            throw new error.required('service', 'service constructor.');
         }
 
         this.service = service;

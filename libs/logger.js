@@ -10,14 +10,14 @@ var Logger = function(prefix) {
 
 Logger.prototype.info = function() {
     return this._logger.info(format.apply(null, _.values(arguments)));
-}
+};
 
 Logger.prototype.error = function() {
     return this._logger.error(format.apply(null, _.values(arguments)));
-}
+};
 
 Logger.prototype.log = function() {
     return this._logger.log(format.apply(null, _.values(arguments)));
-}
+};
 
 module.exports = Logger;

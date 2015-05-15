@@ -34,24 +34,24 @@ var builder = function() {
             .pipe(gulp.dest(pathes.js.dest))
             .pipe(notify(function() {
                 logger.log('finished building `js` in *' + (Date.now() - start) + 'ms*');
-            }))
-    }
+            }));
+    };
 
     rebundle();
 
     return {
         rebundle: rebundle,
         bundler: bundler
-    }
-}
+    };
+};
 
 var watcher = function() {
     var build   = builder();
     var bundler = watchify(build.bundler);
     bundler.on('update', build.rebundle);
-}
+};
 
 module.exports = {
     builder: builder,
     watcher: watcher
-}
+};

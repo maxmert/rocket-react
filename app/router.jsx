@@ -11,4 +11,4 @@ export default function(App) {
             <Route path="" handler={IndexPage}/>
         </Route>
     );
-};
+}
