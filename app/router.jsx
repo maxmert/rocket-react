@@ -8,7 +8,7 @@ let Route = Router.Route;
 export default function(App) {
     return (
         <Route handler={App}>
-            <Route path="" handler={IndexPage}/>
+            <Route path="/" name="index" handler={IndexPage}/>
         </Route>
     );
 }

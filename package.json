@@ -4,7 +4,8 @@
   "description": "Boilerplate ES6 isomorphic React application based on reactive Flux pattern (use RxJS). Uses Babel, React-router, RxJS, Express.",
   "main": "server.js",
   "scripts": {
-    "babel-node": "babel-node --stage 0"
+    "babel-node": "babel-node --stage 0",
+    "test": "mocha --compilers js:mocha-traceur ./libs/mockmock/test"
   },
   "author": "maxmert",
   "license": "Apache 2.0",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "babelify": "^6.1.0",
     "browserify": "^10.1.3",
+    "director": "^1.2.8",
     "esprima-fb": "^15001.1.0-dev-harmony-fb",
     "gulp": "^3.8.11",
     "gulp-if": "^1.2.5",
@@ -34,16 +36,24 @@
     "jscs-jsx-rules": "0.0.1",
     "jshint-jsx": "^0.4.1",
     "jshint-stylish": "^1.0.2",
+    "mocha-traceur": "^2.1.0",
+    "should": "^6.0.1",
+    "supertest": "^1.0.1",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.1",
     "yargs": "^3.9.0"
   },
   "dependencies": {
     "compression": "^1.4.4",
+    "events": "^1.0.2",
     "express": "^4.12.3",
+    "immutable": "^3.7.2",
+    "jsdom": "^3.x.x",
     "lodash": "^3.8.0",
     "logdown": "^1.1.2",
     "react": "^0.13.3",
-    "react-router": "^0.13.3"
+    "react-router": "^0.13.3",
+    "request-promise": "^0.4.2",
+    "rx": "^2.5.2"
   }
 }
