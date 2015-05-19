@@ -29,10 +29,12 @@ gulp.task('default', function() {
 gulp.task('watch', function() {
     livereload.listen();
     gulp.tasks.js.fn({ watch: true });
+    gulp.watch(pathes.js.lint, ['js-lint-jscs', 'js-lint-jshint']);
     nodemon({
         ext: 'html js',
+        verbose: true,
         exec: 'npm run babel-node -- server.js',
-        tasks: ['js-lint-jscs', 'js-lint-jshint']
+        env: { NODE_ENV: isProduction ? 'production' : 'development' }
     })
     .on('restart', function() {
         logger.log('restarted `server`');

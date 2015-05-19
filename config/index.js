@@ -30,6 +30,33 @@ var config = {
                 return config.production ? config.path.static.production : config.path.static.development;
             }
         }
+    },
+
+    // You can describe different APIs for one project
+    api: {
+        uapi: {
+            url: 'http://uapi.maxmert.com',
+            get proxyPrefix() {
+                return format('/uapi/%s', config.api.uapi.version);
+            },
+
+            version: 'v1',
+            key: 'key to the castle',
+            userId: 'test',
+            mock: true
+        },
+
+        authapi: {
+            url: 'http://authapi.maxmert.com',
+            get proxyPrefix() {
+                return format('/authapi/%s', config.api.authapi.version);
+            },
+
+            version: 'v1',
+            key: 'key to the castle',
+            userId: 'test',
+            mock: true
+        }
     }
 };
 

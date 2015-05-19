@@ -29,7 +29,7 @@ export default function factory(config) {
             extract(service).start(app, config, props);
         }
         catch (error) {
-            logger.error(`can't start service <${service}>. Probably it doesn't exist.`);
+            logger.error(`can't start service <${service}>. ${error}`);
         }
     };
 
