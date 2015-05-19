@@ -4,7 +4,7 @@
   "description": "Boilerplate ES6 isomorphic React application based on reactive Flux pattern (use RxJS). Uses Babel, React-router, RxJS, Express.",
   "main": "server.js",
   "scripts": {
-    "babel-node": "babel-node --stage 0",
+    "babel-node": "babel-node",
     "test": "mocha --compilers js:mocha-traceur ./libs/mockmock/test"
   },
   "author": "maxmert",
@@ -47,6 +47,7 @@
     "compression": "^1.4.4",
     "events": "^1.0.2",
     "express": "^4.12.3",
+    "express-http-proxy": "^0.6.0",
     "immutable": "^3.7.2",
     "jsdom": "^3.x.x",
     "lodash": "^3.8.0",
@@ -54,6 +55,7 @@
     "react": "^0.13.3",
     "react-router": "^0.13.3",
     "request-promise": "^0.4.2",
-    "rx": "^2.5.2"
+    "rx": "^2.5.2",
+    "url": "^0.10.3"
   }
 }

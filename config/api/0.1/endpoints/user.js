@@ -29,19 +29,21 @@ const EXAMPLE = {
 };
 
 export default {
-    is: ['paged'],
-    securedBy: ['oauth'],
-    queryParameters: {
-        full: {
-            description: 'Get full user profile'
-        }
-    },
-    responses: {
-        200: {
-            body: {
-                'application/json': {
-                    example: EXAMPLE,
-                    schema: SCHEMA
+    get: {
+        is: ['paged'],
+        queryParameters: {
+            full: {
+                description: 'Get full user profile',
+                example: 'absolutely'
+            }
+        },
+        responses: {
+            200: {
+                body: {
+                    'application/json': {
+                        example: EXAMPLE,
+                        schema: SCHEMA
+                    }
                 }
             }
         }

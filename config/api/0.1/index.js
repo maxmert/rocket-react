@@ -1,8 +1,8 @@
-let API = {
+var API = {
     title: 'Main API',
     version: '0.1',
     get url() {
-        return `/api/${API.version}`;
+        return `/api/v${API.version}`;
     },
 
     protocols: ['HTTP', 'HTTPS'],
@@ -10,15 +10,12 @@ let API = {
         responseType: 'application/json'
     },
 
-    get traits() {
-        return require('./traits');
-    },
+    traits: require('./traits'),
+    securitySchemas: require('./security'),
 
-    get securitySchemes() {
-        return require('./security');
-    },
-
-    '/user': require('./endpoints/user')
+    routes: {
+        '/user': require('./endpoints/user')
+    }
 };
 
-export default API;
+module.exports = API;

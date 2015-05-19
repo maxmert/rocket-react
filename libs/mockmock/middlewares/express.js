@@ -36,21 +36,34 @@ function extractSecure(route) {
     }
 }
 
-function match(bigObject, smallObject) {
-    let smallObjectKeys = _.keys(smallObject);
-    let bigObjectKeys = _.keys(bigObject);
+function match(req, secure) {
+    if (secure) {
+        let secureKeys = _.keys(secure);
+        let reqKeys = _.keys(req);
 
-    return _.reject(smallObjectKeys, (key) => {
-        return _.indexOf(bigObjectKeys, key) >= 0;
-    }).length === 0;
+        return _.reject(secureKeys, (key) => {
+            return _.indexOf(reqKeys, key) >= 0;
+        }).length === 0;
+    }
+    else {
+        return true;
+    }
 }
 
 function isSecured(req, secure) {
-    return match(req.headers, secure.headers) && match(req.query, secure.queryParameters);
+    if (secure) {
+        return match(req.headers, secure.headers) && match(req.query, secure.queryParameters);
+    }
+    else {
+        return true;
+    }
 }
 
-function getResult(route) {
-    return route.responses['200'].body['application/json'].example;
+function getResult(req, route) {
+    let method = req.method.toLowerCase();
+    if (route[method]) {
+        return route[method].responses['200'].body['application/json'].example;
+    }
 }
 
 function exposeToResult(query, params, result) {
@@ -77,6 +90,20 @@ export default function(req, res, next) {
         router.get(name, () => {
             let traits = extractTraits.call(this, route);
             let sequrities = extractSecure.call(this, route);
+            let method = req.method.toLowerCase();
+
+            // Expose only query parameters examples from the API description
+            // that we don't have in req.query
+            if (route[method] && route[method].queryParameters) {
+                let res = {};
+                _.forEach(route[method].queryParameters, (value, key) => {
+                    if (!req.query[key]) {
+                        res[key] = value.example;
+                    }
+                });
+
+                _.assign(req.query, res);
+            }
 
             _.assign(req.query, traits);
 
@@ -84,15 +111,20 @@ export default function(req, res, next) {
                 res.status(403).send({error: sequrities.responses['403'].description});
             }
             else {
-                res.json(exposeToResult(req.query, req.params, getResult(route)));
+                let result = getResult(req, route);
+                if (result) {
+                    res.json(exposeToResult(req.query, req.params, result));
+                }
+                else {
+                    res.status(404).send({error: `No such endpoint '${req.url}' with method ${req.method} in mock API.`});
+                }
             }
         });
     });
 
     router.dispatch(req, res, (error) => {
         if (error) {
-            res.writeHead(404);
-            res.json(error.body);
+            next();
         }
     });
 

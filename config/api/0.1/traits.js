@@ -1,5 +1,5 @@
-export default {
-    pages: {
+module.exports = {
+    paged: {
         queryParameters: {
             pages: {
                 description: 'The number of pages',

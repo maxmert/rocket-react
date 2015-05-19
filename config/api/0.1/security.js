@@ -1,16 +1,16 @@
-export default {
+module.exports = {
     oauth: {
         description: 'Application supports OAuth 2.0 for authenticating all API requests.',
         type: 'OAuth 2.0',
         describedBy: {
             headers: {
-                Authorization: {
+                authorization: {
                     description: 'Used to send a valid OAuth 2 access token. Do not use with the "access_token" query string parameter.',
                     type: 'string'
                 }
             },
             queryParameters: {
-                access_token: {
+                accessToken: {
                     description: 'Used to send a valid OAuth 2 access token. Do not use together with the "Authorization" header',
                     type: 'string'
                 }
